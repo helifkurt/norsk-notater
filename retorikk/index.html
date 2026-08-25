@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Norsk vg3 — Notatbok</title>
+<style>
+:root{
+--brand:#E67AA8;
+--accent:#F2A6C6;
+--boxfill:#FDEEF5;
+--warnfill:#FFF5FA;
+--warnborder:#F2A6C6;
+--text:#222;
+--muted:#666;
+--bg:#FFFAFC;
+--sidebar-w:260px;
+}
+*{box-sizing:border-box;}
+body{
+margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+color:var(--text); background:var(--bg); line-height:1.55;
+}
+header.topbar{
+position:sticky; top:0; z-index:50;
+display:flex; align-items:center; gap:12px;
+background:var(--brand); color:#fff; padding:10px 14px;
+}
+header.topbar button#navToggle{
+background:rgba(255,255,255,.15); border:none; color:#fff; font-size:20px;
+padding:6px 12px; border-radius:8px; cursor:pointer;
+}
+header.topbar .title{font-weight:700; font-size:16px;}
+header.topbar .subtitle{font-size:12px; opacity:.85; margin-left:auto;}
+
+.layout{display:flex; min-height:100vh;}
+
+nav#sidebar{
+width:var(--sidebar-w); flex-shrink:0; background:#fff; border-right:1px solid #e3e3e0;
+position:fixed; top:46px; bottom:0; left:0; overflow-y:auto; padding:14px 10px 40px;
+transform:translateX(0); transition:transform .2s ease; z-index:40;
+}
+nav#sidebar h3{font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:18px 8px 6px;}
+nav#sidebar a{
+display:block; padding:8px 10px; border-radius:8px; color:var(--text); text-decoration:none; font-size:14.5px;
+}
+nav#sidebar a.active, nav#sidebar a:hover{background:var(--boxfill); color:var(--accent); font-weight:600;}
+nav#sidebar .placeholder{
+font-size:13px; color:var(--muted); font-style:italic; padding:8px 10px;
+}
+
+main{margin-left:var(--sidebar-w); padding:26px 22px 80px; max-width:820px; width:100%;}
+
+@media (max-width:820px){
+nav#sidebar{transform:translateX(-105%);}
+nav#sidebar.open{transform:translateX(0); box-shadow:2px 0 16px rgba(0,0,0,.15);}
+main{margin-left:0; padding:20px 16px 80px;}
+}
+
+h1.doctitle{color:var(--brand); font-size:1.7em; margin-bottom:2px;}
+.doc-sub{color:var(--muted); font-style:italic; margin-top:0;}
+
+section{padding-top:10px; margin-bottom:8px; scroll-margin-top:60px;}
+h2{color:var(--brand); border-bottom:2px solid var(--brand); padding-bottom:6px; margin-top:2.4em;}
+h3{color:var(--accent); margin-top:1.6em;}
+h4{font-style:italic; color:#333; margin-bottom:.3em;}
+
+.box{
+background:var(--boxfill); border:1.5px solid var(--accent); border-radius:10px;
+padding:14px 16px; margin:16px 0;
+}
+.box .box-title{color:var(--accent); font-weight:700; margin-bottom:8px; font-size:.95em; text-transform:uppercase; letter-spacing:.02em;}
+.box.warn{background:var(--warnfill); border-color:var(--warnborder);}
+.box.warn .box-title{color:var(--warnborder);}
+.box.plain{background:#f2f2f0; border-color:#bbb;}
+
+ul, ol{padding-left:1.3em;}
+li{margin-bottom:6px;}
+.checklist li{list-style:none; margin-bottom:8px;}
+.checklist li::before{content:"☐ "; }
+
+.example{border-left:4px solid var(--accent); padding-left:14px; margin:18px 0;}
+.example h4{margin-top:0;}
+
+footer.pagefoot{margin-top:60px; padding-top:16px; border-top:1px solid #ddd; color:var(--muted); font-size:.9em;}
+
+a.backtotop{position:fixed; right:16px; bottom:16px; background:var(--accent); color:#fff; border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; text-decoration:none; box-shadow:0 2px 8px rgba(0,0,0,.25); font-size:18px;}
+
+code, .mono{font-family:ui-monospace,Menlo,Consolas,monospace;}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+<button id="navToggle" aria-label="Åpne meny">☰</button>
+<span class="title">Norsk vg3 — Notatbok</span>
+</header>
+
+<div class="layout">
+<nav id="sidebar">
+<h3>Kapittel 6 — Retorikk og sakprosa</h3>
+<a href="#forside">Forside &amp; kompetansemål</a>
+<a href="#hvordan-bruke">Hvordan bruke notatet</a>
+<a href="#k1">1. Hva er en retorisk analyse?</a>
+<a href="#k2">2. Den retoriske situasjonen</a>
+<a href="#k3">3. Etos, logos og patos</a>
+<a href="#k4">4. Argumentasjon</a>
+<a href="#k5">5. Retoriske virkemidler</a>
+<a href="#k6">6. Klassisk retorikk</a>
+<a href="#k7">7. Kortsvar og langsvar</a>
+<a href="#k8">8. Modellanalyse: Northug</a>
+<a href="#ovingstekster">9. Øvingstekster til analyse</a>
+<a href="#k10">10. Modellanalyse 2: Malala</a>
+<a href="#kompetanse">Kobling til kompetansemål</a>
+<a href="#sjekkliste">Sjekkliste</a>
+<a href="#feil">Vanlige eksamensfeil</a>
+<a href="#ordliste">Ordliste</a>
+
+<h3>Kommende kapitler</h3>
+<div class="placeholder">Nye notater legges til her etter hvert som vi jobber gjennom faget — denne notatboken oppdateres i stedet for å lage nye filer.</div>
+</nav>
+
+<main>
+
+<section id="forside">
+<p style="color:var(--accent); font-weight:700; margin-bottom:0;">NORSK VG3</p>
+<h1 class="doctitle">Kapittel 6 — Retorikk og sakprosa</h1>
+<p class="doc-sub">Retorisk analyse – å tolke sakprosatekster</p>
+
+<div class="box plain">
+<p><strong>Dette notatet dekker:</strong> den retoriske situasjonen (aptum og kairos), appellformene etos, logos og patos, argumentasjon, retoriske virkemidler, klassisk retorikk, hvordan du skriver kortsvar og langsvar om retorikk, og en fullstendig modellanalyse.</p>
+<p><strong>Læreverk:</strong> Intertekst vg3 (Fagbokforlaget), kapittel 6 «Retorisk analyse – å tolke sakprosatekster» — notatet følger bokens rekkefølge og begreper, men går mer i dybden.</p>
+</div>
+
+<p><strong>Kompetansemål dette kapittelet dekker (NOR01-08, vg3 studieforberedende):</strong></p>
+<ul>
+<li>«skrive retoriske analyser og tolkninger av sakprosatekster»</li>
+<li>«analysere og tolke ... sakprosa på bokmål og nynorsk fra 1850 til i dag og reflektere over tekstene i lys av den kulturhistoriske konteksten og egen samtid»</li>
+<li>«bruke fagkunnskap og presist fagspråk i utforskende samtaler, diskusjoner og muntlige presentasjoner om norskfaglige emner»</li>
+<li>«orientere seg i faglitteratur, vurdere kilder kritisk og skrive fagartikler som greier ut om og drøfter norskfaglige emner»</li>
+</ul>
+</section>
+
+<section id="hvordan-bruke">
+<h2>Hvordan bruke dette notatet</h2>
+<p>Bruk boksene aktivt: de rosa «viktig»-boksene er begreper du må kunne definere presist, eksempel-boksene viser tankegangen i praksis, og «vanlig feil»-boksene viser hva som ofte trekker ned karakteren. Legg spesielt merke til aptum, som er begrepet du oftest trenger å bruke aktivt i en retorisk analyse.</p>
+</section>
+
+<section id="k1">
+<h2>1. Hva er en retorisk analyse?</h2>
+<p>Å skrive en retorisk analyse vil si å bruke redskapene fra retorikken til å analysere og vurdere en sakprosatekst – å forklare hvordan teksten er laget for å virke på mottakeren, og om den lykkes. Det første du må gjøre, er å finne hovedsynet og formålet.</p>
+<div class="box">
+<div class="box-title">Viktig — Hovedsyn og formål</div>
+<p><strong>Hovedsyn</strong> er avsenderens budskap – det teksten egentlig vil si, kokt ned til én setning.</p>
+<p><strong>Formål</strong> er det avsenderen vil at mottakeren skal tenke, føle eller gjøre etter å ha lest teksten (f.eks. overbevise, informere, advare, selge, engasjere).</p>
+</div>
+<div class="box warn">
+<div class="box-title">Vanlig feil</div>
+<ul>
+<li>Å bytte om på hovedsyn og formål — hovedsyn er HVA teksten mener, formål er HVA den vil oppnå.</li>
+<li>Å nøye seg med å gjenfortelle innholdet i stedet for å analysere hvordan og hvorfor teksten er skrevet slik den er.</li>
+</ul>
+</div>
+</section>
+
+<section id="k2">
+<h2>2. Den retoriske situasjonen</h2>
+<p>Enhver sakprosatekst oppstår i en bestemt sammenheng: en avsender ytrer et budskap til en mottaker, på et bestemt tidspunkt og sted, i en bestemt sjanger. Dette kalles den retoriske situasjonen. To begreper er sentrale: aptum og kairos. Vi starter med aptum — det er begrepet du oftest trenger å bruke aktivt.</p>
+
+<h3>2.1 Aptum – det passende</h3>
+<p>Aptum betyr «det passende» eller «det formålstjenlige», og brukes til å vurdere om en tekst er tilpasset situasjonen den skal fungere i. Aptum er en av de klassiske språklige dydene i retorikken, sammen med blant annet perspicuitas (klarhet), ornatus (utsmykning) og puritas (språklig korrekthet).</p>
+<div class="box">
+<div class="box-title">Viktig — To typer aptum</div>
+<p><strong>Indre aptum:</strong> de ulike delene av teksten fungerer godt sammen — språk, stil, virkemidler og innhold spiller på lag.</p>
+<p><strong>Ytre aptum:</strong> teksten passer til situasjonen den er ytret i, til publikummet den skal nå, og til avsenderen selv.</p>
+</div>
+<p>Ytre aptum kan brytes ned i fem ting avsenderen må tilpasse til hverandre:</p>
+<ul>
+<li><strong>Talesituasjonen/anledningen:</strong> passer stilen og innholdet til konteksten — er den høytidelig, uformell, digital, muntlig?</li>
+<li><strong>Mottakeren:</strong> er språket tilpasset publikums kunnskapsnivå, alder og forventninger?</li>
+<li><strong>Emnet:</strong> står formen i stil til hvor alvorlig eller lett temaet er?</li>
+<li><strong>Avsenderen selv:</strong> stemmer måten avsenderen uttrykker seg på med hvem hen er (henger sammen med etos)?</li>
+<li><strong>Sjangeren:</strong> følger teksten normene for sjangeren, f.eks. kronikk, tale eller innlegg?</li>
+</ul>
+<div class="example">
+<h4>Eksempel: aptum og manglende aptum</h4>
+<p><strong>Begravelsestale:</strong> Med aptum er talen rolig og høytidelig. Uten aptum bruker taleren mye humor — det passer ikke situasjonen.</p>
+<p><strong>Jobbsøknad:</strong> Med aptum er språket formelt og profesjonelt. Uten aptum er den skrevet som en tekstmelding, full av emojier og privat informasjon.</p>
+<p><strong>Reklame:</strong> En reklame for bukser kan være ung og trendy; en reklame for gravemaskiner er seriøs og fokuserer på kraft og holdbarhet. Begge treffer aptum riktig for sitt formål og publikum.</p>
+</div>
+<div class="box warn">
+<div class="box-title">Vanlig feil</div>
+<ul>
+<li>Å bruke aptum bare som et stempel («teksten har aptum») uten å forklare HVA som gjør at den passer eller ikke.</li>
+<li>Å glemme indre aptum og bare vurdere teksten utenfra (ytre aptum).</li>
+</ul>
+</div>
+
+<div class="box plain">
+<p>Et fullstendig, sammenhengende langsvar-eksempel som viser aptum <em>og</em> etos/logos/patos analysert i én flytende tekst, finner du i punkt 8 (Modellanalyse: Petter Northugs unnskyldning). Der ser du nøyaktig hvordan et ferdig langsvar skal se ut i praksis.</p>
+</div>
+
+<h3>2.2 Kairos – det rette øyeblikket</h3>
+<p>Kairos betyr «det rette øyeblikket» og handler om tidspunktet, stedet og situasjonen en tekst er ytret i. Mens aptum spør om teksten passer, spør kairos om timingen er riktig.</p>
+<div class="example">
+<h4>Eksempel: kairos</h4>
+<p>En klimaaktivist som holder appell rett etter en flom i lokalsamfunnet, treffer et godt kairos — publikum er allerede opptatt av temaet.</p>
+</div>
+<div class="box plain">
+<p><strong>Kairos vs. den retoriske situasjonen:</strong> Kairos er i utgangspunktet et eldre og snevrere begrep — det handler om å gripe det rette øyeblikket for en ytring. Den retoriske situasjonen (jf. Bitzers modell i punkt 2.4) er et mer omfattende fagbegrep, utviklet nettopp for å studere tekst i kontekst, og egner seg derfor best som redskap i en fullstendig retorisk analyse.</p>
+<p>Et kjent eksempel på svært godt kairos er John F. Kennedys Berlin-tale i 1963, der han sa «Ich bin ein Berliner» — en kort, symboltung setning ytret på nøyaktig rett sted og tidspunkt for å vise solidaritet med Vest-Berlin under den kalde krigen.</p>
+</div>
+
+<h3>2.3 Avsender, mottaker og kontekst</h3>
+<p>Når du åpner en retorisk analyse, bør du kort etablere den retoriske situasjonen: Hvem er avsender (og hvilken etos har hen fra før)? Hvem er mottakeren/målgruppen? Hva er konteksten — hvor og når er teksten publisert, og hvorfor akkurat da?</p>
+
+<h3>2.4 Modelleksempel: Bitzers retoriske situasjon og et aptum-problem</h3>
+<p>Den amerikanske retorikkforskeren Lloyd Bitzer har laget en modell som deler den retoriske situasjonen inn i tre deler, og som gjør det lettere å analysere presist HVORFOR en tekst oppstår akkurat som og når den gjør:</p>
+<ul>
+<li><strong>Det påtrengende problemet:</strong> hva er det som tvinger fram en ytring akkurat nå — en hendelse, et behov, en konflikt?</li>
+<li><strong>Det retoriske publikummet:</strong> hvem er det som faktisk kan påvirkes av teksten til å tenke eller handle annerledes?</li>
+<li><strong>De tvingende omstendighetene:</strong> hvilke ytre begrensninger — tid, sted, manglende informasjon, manglende kontroll — påvirker hvordan avsenderen kan svare?</li>
+</ul>
+<div class="example">
+<h4>Eksempel: en pressetale i et akutt øyeblikk</h4>
+<p>Et kjent eksempel er den amerikanske presidenten George W. Bushs korte uttalelse til pressen 11. september 2001. Han var på skolebesøk da han fikk beskjed om terrorangrepene mot World Trade Center, og måtte umiddelbart si noe offentlig før han reiste videre til Washington.</p>
+<p><strong>Påtrengende problem:</strong> selve terrorangrepet — en nasjonal tragedie som krevde en umiddelbar reaksjon fra landets øverste leder.</p>
+<p><strong>Retorisk publikum:</strong> i rommet satt elever og lærere ved skolen, men det egentlige publikummet var hele det amerikanske folket, som fulgte med via mediene.</p>
+<p><strong>Tvingende omstendigheter:</strong> Bush hadde svært lite informasjon om hva som faktisk hadde skjedd, og ingen mulighet til å kontrollere den videre utviklingen — noe som gjorde det krevende å formulere en uttalelse som virket trygg og handlekraftig.</p>
+</div>
+<p>Uttalelsen er også et godt eksempel på hvordan aptum kan svikte selv i en velment tekst. Han innleder med å konstatere at «this is a difficult moment for America» og takke skolen for gjestfriheten, før han går videre til selve angrepet — en rekkefølge som gjør at det alvorlige budskapet først kommer i skyggen av en høflighetsfrase. Han bruker dessuten det samme uformelle ordet «folks» både om elevene han nettopp har besøkt, og om terroristene bak angrepet, noe som gir teksten en påfallende uformell tone til en så alvorlig sak. Sett under ett gir dette inntrykk av at avsenderen ikke helt har kontroll over situasjonen — et konkret eksempel på svak aptum i praksis, og et godt sammenligningsgrunnlag mot Northug-eksempelet i punkt 8, der aptum tvert imot er godt ivaretatt.</p>
+</section>
+
+<section id="k3">
+<h2>3. Appellformene: etos, logos og patos</h2>
+<p>Når avsenderen argumenterer for hovedsynet, gjør hen det gjennom tre klassiske appellformer.</p>
+
+<h3>3.1 Etos – troverdighet</h3>
+<p>Etos er avsenderens troverdighet, og bygges i tre faser:</p>
+<ul>
+<li><strong>Innledende etos:</strong> det vi vet om avsenderen før hen sier noe — rykte, tittel, stilling.</li>
+<li><strong>Avledet etos:</strong> troverdigheten avsenderen bygger opp underveis, gjennom hvordan hen uttrykker seg i selve teksten.</li>
+<li><strong>Endelig etos:</strong> inntrykket mottakeren sitter igjen med etter å ha lest teksten.</li>
+</ul>
+<div class="box plain">
+<div class="box-title">Samme begrep, to navnesett</div>
+<p>Fra vg2 kjenner du kanskje etos som en todeling: <strong>situert etos</strong> (troverdigheten avsenderen har fra før — tilsvarer innledende etos) og <strong>konstruktiv etos</strong> (troverdigheten avsenderen bygger opp i selve teksten — tilsvarer avledet + endelig etos til sammen). Begge modellene beskriver det samme; Intertekst vg3 bruker bare tredelingen over, så bruk den i vg3-besvarelser.</p>
+<p><strong>Effekt:</strong> mottakeren tenker «jeg stoler på denne personen» → lettere å tro på budskapet.</p>
+</div>
+
+<h3>3.2 Logos – saklig argumentasjon</h3>
+<p>Logos er selve tekstens innhold og argumentasjon — fakta, statistikk og logiske resonnementer som appellerer til fornuften.</p>
+<div class="box plain">
+<p><strong>Effekt:</strong> mottakeren tenker «dette gir mening — argumentene er sterke».</p>
+</div>
+
+<h3>3.3 Patos – følelser og verdier</h3>
+<p>Patos er appellen til mottakerens følelser og verdier — frykt, håp, medfølelse, sinne, stolthet.</p>
+<div class="box plain">
+<p><strong>Effekt:</strong> mottakeren blir følelsesmessig engasjert → lettere å overbevise.</p>
+</div>
+
+<div class="example">
+<h4>Eksempel: typiske signalfraser</h4>
+<p><strong>Etos:</strong> avsenderen viser til egen erfaring, ekspertise eller tidligere resultater for å virke troverdig — for eksempel ved å vise til hva hen har oppnådd før.</p>
+<p><strong>Logos:</strong> avsenderen viser til tall, statistikk eller sammenligninger for å underbygge en påstand — for eksempel ved å hevde at «tallene viser at» noe har blitt bedre eller dårligere.</p>
+<p><strong>Patos:</strong> avsenderen bruker ladede spørsmål eller sterke bilder som skal vekke følelser hos mottakeren — for eksempel retoriske spørsmål formulert for å utløse medfølelse eller indignasjon.</p>
+</div>
+
+<div class="box warn">
+<div class="box-title">Vanlig feil</div>
+<ul>
+<li>Å bare nevne at teksten «bruker etos, logos og patos» uten å vise konkret HVOR og HVORDAN.</li>
+<li>Å tro at patos alltid er negativt/manipulerende — det er et legitimt virkemiddel når det brukes ærlig.</li>
+<li>Å forveksle etos med aptum: etos handler om avsenderens troverdighet, aptum om hvorvidt HELE teksten passer situasjonen.</li>
+</ul>
+</div>
+</section>
+
+<section id="k4">
+<h2>4. Argumentasjon</h2>
+<p>Kjernen i logos er argumentasjonen. Et argument er en påstand pluss en begrunnelse:</p>
+<div class="box">
+<div class="box-title">Viktig — Argumentmodellen</div>
+<p>Påstand + «Hvorfor det?» → «Fordi …» = argument.</p>
+<p>Eksempel: Påstand: Skolen bør innføre mobilforbud. Hvorfor det? Fordi forskning viser at mobilbruk i timene svekker konsentrasjonen.</p>
+</div>
+<p>I en analyse skal du ikke bare liste opp argumentene, men vurdere dem: Er begrunnelsen relevant og god? Bygger argumentene på fakta, følelser eller troverdighet? Mangler det argumenter eller motargumenter?</p>
+</section>
+
+<section id="k5">
+<h2>5. Retoriske virkemidler og stilfigurer</h2>
+<p>Å bare navngi et virkemiddel gir ingen poeng — koble alltid virkemiddel, eksempel og effekt sammen.</p>
+<ul>
+<li><strong>Retorisk spørsmål:</strong> et spørsmål uten forventet svar, skal få mottakeren til å tenke selv. «Er det virkelig slik vi vil ha det?»</li>
+<li><strong>Gjentakelse (anafor):</strong> samme ord/setningsstart gjentas. «Vi må kjempe. Vi må stå sammen.»</li>
+<li><strong>Trikolon (tredeling):</strong> tre ledd for rytme og tyngde. «Av folket, ved folket, for folket.»</li>
+<li><strong>Metafor:</strong> noe beskrives ved hjelp av noe annet. «Livet er en reise.»</li>
+<li><strong>Sammenligning:</strong> to ting sammenlignes eksplisitt, ofte med «som».</li>
+<li><strong>Kontrast/antitese:</strong> motsetninger side om side for å tydeliggjøre.</li>
+<li><strong>Hyperbol:</strong> bevisst overdrivelse for å dramatisere.</li>
+<li><strong>Ironi:</strong> å si det motsatte av det man mener.</li>
+<li><strong>Allusjon:</strong> henvisning til en kjent kilde — bibelsitat, historisk hendelse, kjent verk.</li>
+<li><strong>Personifikasjon:</strong> noe ikke-levende gis menneskelige egenskaper. «Naturen roper varsku.»</li>
+<li><strong>Direkte henvendelse til leseren:</strong> avsenderen tiltaler mottakeren direkte, skaper nærhet. «Du som sitter her i dag, kan gjøre en forskjell.»</li>
+<li><strong>Appell til fellesskap:</strong> bruk av «vi» og «oss» for å få mottakeren til å kjenne seg som del av gruppen som skal handle. «Sammen kan vi snu utviklingen.»</li>
+</ul>
+<div class="box">
+<div class="box-title">Tips</div>
+<p>Følg malen: virkemiddel → eksempel fra teksten → hvilken appellform det styrker → effekten på mottakeren.</p>
+</div>
+</section>
+
+<section id="k6">
+<h2>6. Klassisk retorikk — nyttig bakgrunn</h2>
+<h3>6.1 De fem arbeidsfasene</h3>
+<ul>
+<li><strong>Inventio:</strong> å finne stoff og argumenter.</li>
+<li><strong>Dispositio:</strong> å ordne stoffet i en hensiktsmessig rekkefølge.</li>
+<li><strong>Elocutio:</strong> å utforme språket og stilen.</li>
+<li><strong>Memoria:</strong> å memorere innholdet.</li>
+<li><strong>Actio:</strong> selve framføringen.</li>
+</ul>
+<h3>6.2 Talens/tekstens fire deler</h3>
+<ul>
+<li><strong>Exordium:</strong> innledningen, vekker interesse og etablerer etos.</li>
+<li><strong>Narratio:</strong> saksframstillingen.</li>
+<li><strong>Argumentatio:</strong> hoveddelen med argumentasjon.</li>
+<li><strong>Peroratio:</strong> avslutningen, ofte den mest følelsesladde delen.</li>
+</ul>
+</section>
+
+<section id="k7">
+<h2>7. Å skrive om retorikk: kortsvar og langsvar</h2>
+<h3>7.1 Kortsvar</h3>
+<p>Et kortsvar svarer presist på ett avgrenset spørsmål — definisjon pluss et konkret eksempel, uten innledning/avslutning.</p>
+<div class="box">
+<div class="box-title">Oppskrift</div>
+<p>1) Definer begrepet presist. 2) Knytt det til et konkret eksempel. 3) Forklar kort hvorfor/hvordan det virker. Hold deg til 5–10 setninger.</p>
+</div>
+<div class="example">
+<h4>Eksempeloppgave</h4>
+<p><em>«Gjør rede for hva aptum er, og forklar med et eksempel hvorfor aptum er viktig i en retorisk analyse.»</em></p>
+<p><strong>Eksempelsvar:</strong> Aptum er det retoriske begrepet vi bruker for å vurdere om en tekst passer til situasjonen den opptrer i. Aptum er viktig fordi selv en tekst med gode argumenter kan mislykkes hvis formen er feil: en useriøs tone i en offisiell beklagelse svekker avsenderens etos, uansett hvor gode argumentene er.</p>
+</div>
+
+<h3>7.2 Langsvar</h3>
+<p>Et langsvar er en sammenhengende tekst med innledning, hoveddel og avslutning. Disposisjon:</p>
+<ol>
+<li><strong>Innledning:</strong> presenter teksten (avsender, sjanger, kontekst), og formuler hovedsyn og formål.</li>
+<li><strong>Den retoriske situasjonen:</strong> aptum og kairos — passer teksten til situasjon, mottaker og avsender?</li>
+<li><strong>Appellformene:</strong> etos, logos og patos med konkrete eksempler.</li>
+<li><strong>Argumentasjon og virkemidler:</strong> knytt hvert eksempel til effekt og appellform.</li>
+<li><strong>Vurdering:</strong> når teksten formålet sitt for mottakeren? Begrunn.</li>
+<li><strong>Avslutning:</strong> oppsummer og gi et tydelig, samlet svar.</li>
+</ol>
+<div class="box warn">
+<div class="box-title">Vanlig feil</div>
+<ul>
+<li>Å skrive et langsvar som ren gjenfortelling, uten å analysere HVORDAN teksten virker.</li>
+<li>Å bruke kortsvarsformen når oppgaven ber om full analyse, eller omvendt.</li>
+<li>Å glemme å konkludere tydelig.</li>
+</ul>
+</div>
+</section>
+
+<section id="k8">
+<h2>8. Modellanalyse: Petter Northugs unnskyldning</h2>
+<p>Dette er notatbokens <strong>fullstendige modelleksempel</strong>: ett sammenhengende langsvar som viser hvordan aptum og appellformene etos, logos og patos analyseres <em>i sammenheng</em>, i løpende tekst — slik du faktisk skal skrive det på en prøve. Teksten følger disposisjonen fra punkt 7.2. De viktigste setningene er understreket, slik at du ser nøyaktig hvilke grep som gjør analysen god.</p>
+<p>14. august 2020 ble langrennsløperen Petter Northug stanset i en fartskontroll og siktet for kjøring i ruspåvirket tilstand; politiet fant også en mindre mengde kokain hjemme hos ham. Samme kveld publiserte Northug en offentlig unnskyldning i sosiale medier, rettet til fans, medier og offentligheten. Dette er et kjent eksempel fra norskundervisningen (bl.a. brukt på NDLA).</p>
+
+<h3>8.1 Innledning</h3>
+<p>Teksten som analyseres, er en kort offentlig unnskyldning publisert av langrennsløperen Petter Northug på sosiale medier samme kveld som han ble stanset i en fartskontroll, siktet for ruspåvirket kjøring, og hvor politiet også fant en mindre mengde kokain hjemme hos ham. <u>Hovedsynet i teksten er at Northug tar fullt ansvar for det som har skjedd, og formålet er å gjenopprette tillit hos fansen og offentligheten</u> etter en alvorlig hendelse. I det følgende analyseres først den retoriske situasjonen og aptum, deretter etos, logos og patos, før teksten vurderes samlet.</p>
+
+<h3>8.2 Den retoriske situasjonen og aptum</h3>
+<p>Avsenderen er en av Norges mest kjente idrettsutøvere, med høy innledende etos i kraft av tidligere prestasjoner og status. Situasjonen er alvorlig: et lovbrudd som involverer ruspåvirket kjøring og narkotika. Mottakerne er fans, medier og en bredere offentlighet som forventer et ærlig og seriøst svar. <u>Kairos er umiddelbar</u> — uttalelsen kommer samme kveld, før mediene rekker å sette dagsordenen selv, noe som gir Northug kontroll over hvordan saken først blir framstilt.</p>
+<p>Nettopp fordi situasjonen er så alvorlig, er aptum — om formen passer til situasjonen — helt sentralt her. Northug innleder direkte og uten omsvøp: han skriver at han «har gjort en stor feil». Han beskriver deretter kort og faktisk hva som skjedde, uten å bortforklare eller bagatellisere hendelsen, og uttrykker at han er fortvilet og lei seg for dem han har skuffet. <u>Denne korte, direkte og ydmyke formen passer godt både til sjangeren (offentlig unnskyldning), til hvor alvorlig situasjonen er, og til det mottakerne trenger å høre</u> — en useriøs, humoristisk eller forsvarende tone ville brutt kraftig med alvoret og svekket ham ytterligere. Hadde Northug i stedet bortforklart hendelsen eller lagt skylden på andre, ville aptum vært brutt: formen ville stått i sterk kontrast til alvoret i saken, og uttalelsen ville trolig blitt oppfattet som useriøs eller manipulerende.</p>
+
+<h3>8.3 Etos, logos og patos</h3>
+<p>Northugs <strong>innledende etos</strong> er høy i kraft av status som kjent utøver, men samtidig satt under sterkt press av selve lovbruddet. <u>Den avledede etosen — troverdigheten han bygger opp underveis i selve teksten — styrkes av den ærlige, direkte tonen og at han ikke bortforklarer noe</u>, noe som gir inntrykk av at han tar reelt ansvar. Den endelige etosen, altså inntrykket mottakeren sitter igjen med, er trolig styrket for mange sammenlignet med om han hadde tiet eller bortforklart hendelsen — selv om selve handlingen svekker etos i utgangspunktet.</p>
+<p>Logos er begrenset i en så kort tekst, men <u>Northug oppgir konkrete fakta (fart, blodprøve, funn av stoff) i stedet for vage formuleringer</u>, noe som gir uttalelsen en viss saklig tyngde. Patos er tydeligere til stede: de følelsesladde ordvalgene («fortvilet», «lei meg for dere som har støttet meg») appellerer til medfølelse hos leseren, og <u>skaper et bilde av et menneske som er oppriktig lei seg, ikke bare en pliktoppfyllende pressemelding</u>. Legg merke til hvordan aptum og etos henger sammen her: fordi formen (den ydmyke, direkte tonen) passer situasjonen, styrkes samtidig den avledede etosen — godt aptum bygger opp under etos, ikke bare tvert om.</p>
+
+<h3>8.4 Vurdering og avslutning</h3>
+<p>Northugs unnskyldning fungerer godt retorisk fordi aptum og de tre appellformene trekker i samme retning: <u>en alvorlig sak møtes med en alvorlig, ærlig og personlig tone</u>, noe som gjør at uttalelsen framstår troverdig for mange mottakere, selv om den ikke kan endre selve lovbruddet. Svakheten er at en så kort tekst har begrenset plass til logos — den hviler tungt på etos og patos, noe som fungerer godt i en unnskyldning, men ville vært utilstrekkelig i for eksempel en argumenterende kronikk. Samlet sett når teksten formålet sitt: <u>den bidrar til å gjenopprette tillit gjennom ærlighet og ydmykhet, tilpasset nøyaktig den situasjonen og det publikummet den er rettet mot</u>.</p>
+<div class="box">
+<div class="box-title">Slik er langsvaret bygd opp</div>
+<p>1) Innledning: presenter teksten, hovedsyn og formål. 2) Den retoriske situasjonen og aptum: etabler avsender/mottaker/kontekst, og vurder om formen passer — gjerne med et motsatt eksempel. 3) Etos, logos og patos: vis hvordan hver appellform virker, og koble dem gjerne til aptum-vurderingen. 4) Vurdering/avslutning: ta stilling til om teksten når formålet sitt, og oppsummer tydelig.</p>
+</div>
+</section>
+
+<section id="ovingstekster">
+<h2>9. Øvingstekster til analyse</h2>
+<p>Fem korte, originale øvingstekster i ulike sjangre. Bruk dem til å øve på retorisk analyse — hver tekst har en oppgave under seg. (Om Tekst 1: siden vi ikke kan gjengi hele Northugs virkelige uttalelse her, er øvingsteksten under skrevet av meg i samme sjanger og med samme type situasjon, slik at du kan øve på nøyaktig samme analysemetode som i modelleksempelet i punkt 8. Den ekte, korte formuleringen fra Northug står fortsatt sitert der.)</p>
+
+<h3>9.0 Modellsvar: et fullstendig eksempel før du starter</h3>
+<p>Før du prøver deg på tekstene under, kan det være nyttig å se et fullstendig <em>svar</em> på en aptum-oppgave — både som kortsvar og som langsvar. Dette er en ny, original øvingstekst (en annen situasjon enn Northug-eksempelet, men samme type oppgave: vurder aptum). Viktige poenger i svarene er understreket.</p>
+
+<div class="example">
+<h4>Øvingstekst til modellsvaret: pressemelding etter en datalekkasje</h4>
+<p><em>«Vi ble i går kveld klar over at kundedata har vært eksponert på grunn av en sikkerhetsglipp i systemene våre. Dette skulle aldri ha skjedd, og vi tar det på det største alvor. Vi har stengt det berørte systemet, varslet Datatilsynet, og vil kontakte alle som er rammet direkte i løpet av de neste 48 timene. Vi er lei oss for den bekymringen dette skaper, og vi jobber nå med å sikre at det ikke skjer igjen.»</em></p>
+<p><strong>Oppgave (modell):</strong> «Vurder aptum i teksten over. Passer form og tone til situasjonen?»</p>
+</div>
+
+<div class="box">
+<div class="box-title">Modellsvar — kortsvar</div>
+<p><u>Aptum handler om hvorvidt en tekst er tilpasset situasjonen, mottakeren og avsenderen den opptrer i.</u> I denne pressemeldingen er aptum godt ivaretatt: <u>bedriften innrømmer feilen direkte</u> («dette skulle aldri ha skjedd») i stedet for å bortforklare den, og oppgir <u>konkrete, konstruktive tiltak</u> (stengt system, varslet Datatilsynet, kontakt innen 48 timer) framfor vage forsikringer. Den nøkterne, saklige tonen passer til sjangeren (offisiell pressemelding) og til at mottakerne — kundene som er rammet — trenger presis informasjon mer enn unnskyldende følelsesuttrykk akkurat nå. Aptum ville vært brutt hvis teksten i stedet hadde bagatellisert lekkasjen eller virket useriøs.</p>
+</div>
+
+<div class="box">
+<div class="box-title">Modellsvar — langsvar</div>
+<p>Teksten er en pressemelding publisert i forbindelse med at en bedrift har oppdaget en sikkerhetsglipp som har eksponert kundedata. Avsender er bedriften selv, mottakerne er kundene som er rammet samt en bredere offentlighet og mediene, og formålet er å informere om hendelsen samtidig som bedriften forsøker å begrense skaden på egen troverdighet. <u>Det er dette forholdet mellom en alvorlig, tillitssvekkende hendelse og hvordan bedriften velger å formulere seg, aptum-analysen må ta stilling til.</u></p>
+<p>Vurdert opp mot <u>ytre aptum</u> passer teksten godt til situasjonen. Formuleringen «dette skulle aldri ha skjedd, og vi tar det på det største alvor» er en <u>direkte innrømmelse uten forsøk på å minimere ansvaret</u>, noe som er nødvendig når mottakerne nettopp har fått vite at egne data er eksponert. Samtidig er språket saklig og upersonlig («vi har stengt det berørte systemet, varslet Datatilsynet»), noe som passer til sjangeren pressemelding — her forventes presisjon og handlingsorientering, ikke en emosjonell fortelling. <u>Valget om å liste opp konkrete tiltak framfor å bruke plass på unnskyldninger viser at avsenderen har forstått hva denne bestemte mottakergruppen faktisk trenger i situasjonen: informasjon de kan handle på.</u></p>
+<p>Også <u>indre aptum</u> er ivaretatt: teksten beveger seg logisk fra innrømmelse, via konkrete tiltak, til et kort uttrykk for beklagelse («vi er lei oss for den bekymringen dette skaper») og et framtidsrettet løfte. Det er ingen brudd i register — teksten er saklig og alvorlig fra første til siste setning.</p>
+<p>Hadde bedriften i stedet brukt en uformell eller bagatelliserende tone, eller latt være å nevne konkrete tiltak, ville aptum vært brutt: <u>mottakerne ville sittet igjen med inntrykk av at bedriften ikke tar hendelsen på alvor</u>, noe som ville svekket etos ytterligere i en allerede vanskelig situasjon. Konklusjonen er at teksten lykkes retorisk fordi den er tilpasset både alvoret i saken, kravene til sjangeren, og det konkrete behovet til den rammede mottakergruppen.</p>
+</div>
+
+<div class="example">
+<h4>Tekst 1 — Øvingstekst: offentlig unnskyldning (samme sjanger som Northug-eksempelet)</h4>
+<p><em>«Jeg har gjort en alvorlig feil, og det finnes ingen god unnskyldning for det. I går kveld tok jeg valg som satte andres sikkerhet i fare, og jeg tar det på fullt alvor. Jeg er skuffet over meg selv, og enda mer lei meg for dere som har støttet meg gjennom årene. Jeg lover å ta lærdom av dette og gjøre opp for meg.»</em></p>
+<p><strong>Oppgave:</strong> Bruk aptum-analysen i modelleksempelet i punkt 8 som mal (retorisk situasjon → vurdering av aptum, med et motsatt eksempel → konklusjon) til å skrive en fullstendig aptum-analyse av denne teksten på egen hånd.</p>
+</div>
+
+<div class="example">
+<h4>Tekst 2 — Tale (elevrådsleder ved skolestart)</h4>
+<p><em>«Kjære medelever! Et nytt skoleår ligger foran oss, fullt av muligheter vi ennå ikke har sett. Jeg vet at mange av dere kjenner på både forventning og litt uro — det er helt naturlig. Men husk: vi går ikke inn i dette året alene. Vi går inn i det sammen, som klasser, som venner, som ett elevråd. La oss gjøre dette skoleåret til det beste hittil — for oss selv, for hverandre, og for skolen vår. Lykke til, alle sammen!»</em></p>
+<p><strong>Oppgave:</strong> Finn minst to retoriske virkemidler (se punkt 5) i teksten, og forklar hvilken appellform hvert av dem styrker.</p>
+</div>
+
+<div class="example">
+<h4>Tekst 3 — Kronikkutdrag (klima)</h4>
+<p><em>«Hver sommer blir varmere enn den forrige, og likevel fortsetter vi å diskutere som om vi har all tid i verden. Hvor lenge skal vi vente før vi tar klimakrisen på alvor? Forskere har i flere tiår advart mot konsekvensene av høye utslipp, og nå ser vi dem utfolde seg foran øynene våre: tørke, flom, arter som forsvinner. Dette er ikke lenger et spørsmål om vi bør handle, men om vi tør å handle før det er for sent.»</em></p>
+<p><strong>Oppgave:</strong> Identifiser hovedsyn og formål. Pek på ett sted teksten bruker logos og ett sted den bruker patos.</p>
+</div>
+
+<div class="example">
+<h4>Tekst 4 — Reklametekst</h4>
+<p><em>«Møt dagen din uthvilt. Madrassen er utviklet i samarbeid med søvneksperter for å gi deg dypere, roligere søvn — natt etter natt. Fordi en bedre morgen begynner med en bedre natt.»</em></p>
+<p><strong>Oppgave:</strong> Vurder aptum: passer form, lengde og tone til sjangeren (reklame) og til et publikum som bryr seg om søvnkvalitet?</p>
+</div>
+
+<div class="example">
+<h4>Tekst 5 — Leserinnlegg (mobilforbud i skolen)</h4>
+<p><em>«Skolen bør innføre mobilforbud i timene. Grunnen er enkel: forskning viser gang på gang at mobilbruk i undervisningen svekker konsentrasjonen og læringsutbyttet til elevene. Motstanderne hevder at elever må lære å regulere seg selv, men realiteten er at selv voksne strever med det samme. Hvis vi virkelig bryr oss om elevenes læring, må vi tørre å sette grenser — også når det er upopulært.»</em></p>
+<p><strong>Oppgave:</strong> Bruk argumentmodellen fra punkt 4 (påstand + fordi …) til å skrive ut hovedargumentet i teksten. Legg merke til at teksten også nevner et motargument — hvorfor styrker det avsenderens sak å gjøre det?</p>
+</div>
+</section>
+
+<section id="k10">
+<h2>10. Modellanalyse 2: Malala Yousafzais FN-tale (2013)</h2>
+<p>En annen tekst som ofte brukes til norskeksamen, og som viser en litt annen retorisk situasjon enn Northug-eksempelet: en tale holdt for å <em>overbevise om en sak</em>, ikke for å be om unnskyldning. 12. juli 2013 — på sin 16-årsdag — holdt den pakistanske utdanningsaktivisten Malala Yousafzai en tale for FNs ungdomsforsamling, ni måneder etter at hun ble skutt av Taliban fordi hun kjempet for jenters rett til skolegang. Talen ble en av de mest kjente appellene for utdanning i moderne tid.</p>
+
+<h3>10.1 Den retoriske situasjonen</h3>
+<p>Avsenderen er en da 16 år gammel jente med ekstremt høy innledende etos: hun har selv overlevd et attentat for saken hun taler om. Mottakerne er FN-delegater, verdensledere og et globalt TV-publikum. Konteksten er internasjonal uro og en pågående debatt om barns rett til utdanning, særlig jenters. Formålet er å mobilisere politisk vilje og internasjonal støtte til utdanning for alle barn.</p>
+
+<h3>10.2 Etos</h3>
+<p>Malala bygger etos på tre måter. For det første gjennom egen erfaring: hun viser til at hun selv ble angrepet for saken sin, noe som gjør henne til et levende bevis på alvoret i budskapet. For det andre gjennom moralsk holdning: hun understreker at hun ikke bærer nag til den som skjøt henne, noe som får henne til å framstå som moden og fredelig snarere enn hevngjerrig. For det tredje gjennom selve motet ved å stå fram offentlig. Til sammen gjør dette at hun ikke bare sier ordene — hun lever dem.</p>
+
+<h3>10.3 Logos</h3>
+<p>Talen er også logisk oppbygd: Malala peker på en årsak–virkning-kjede der utdanning fører til tryggere samfunn, mindre fattigdom og svekket ekstremisme, og hun viser til konkrete steder i verden — deriblant Pakistan — der barn rammes av konflikt og mangel på skolegang. Ved å vise at problemet gjelder globalt, ikke bare henne selv, styrker hun argumentasjonens rekkevidde.</p>
+
+<h3>10.4 Patos</h3>
+<p>Patos er den mest fremtredende appellen. Malala beskriver barn som lider i stillhet og jenter som tvinges inn i barneekteskap eller nektes skolegang, noe som skaper sterk empati. Den mest kjente formuleringen fra talen er trolig gjentakelsen «One child, one teacher, one book, one pen can change the world», som fungerer som en anafor og gir talen en rytme mange husker den for.</p>
+
+<h3>10.5 Retoriske virkemidler</h3>
+<ul>
+<li><strong>Anafor:</strong> gjentatte oppfordringer til verdens ledere skaper rytme og understreker kravene.</li>
+<li><strong>Kontrast:</strong> hun stiller våpen opp mot bøker og penner, noe som gjør budskapet — at utdanning er den sterkeste motmakten — lett å forstå.</li>
+<li><strong>Metafor:</strong> penn og bok omtales som våpen, en metafor som løfter talens hovedpoeng om at utdanning er makt.</li>
+<li><strong>Allusjon:</strong> hun trekker fram kjente fredssymboler fra ulike religioner og kulturer, noe som gir talen moralsk tyngde på tvers av landegrenser.</li>
+</ul>
+
+<h3>10.6 Vurdering</h3>
+<p>Talen er svært effektiv fordi etos, patos og logos trekker i samme retning: Malala er selv beviset på det hun snakker om, følelsene hun vekker er ekte og velbegrunnede, og argumentasjonen løfter saken fra én persons historie til et globalt anliggende. At avsenderen bokstavelig talt har betalt en høy pris for saken sin, gjør det svært vanskelig for mottakerne å avvise budskapet uten selv å framstå kynisk.</p>
+<div class="box">
+<div class="box-title">Sammenlign med Northug-analysen</div>
+<p>Legg merke til forskjellen i formål: Northug-teksten skal gjenopprette tillit etter en feil (unnskyldning), mens Malala-talen skal mobilisere til handling for en sak (appell). Begge lener seg tungt på etos og patos, men av helt ulike grunner — det er nyttig å kunne forklare denne forskjellen på eksamen.</p>
+</div>
+</section>
+
+<section id="kompetanse">
+<h2>Kobling til kompetansemål</h2>
+<p>For å vise mestring på høyeste nivå bør du:</p>
+<ul>
+<li>identifisere hovedsyn og formål presist, uten å gjenfortelle hele teksten</li>
+<li>bruke fagbegrepene (aptum, kairos, etos, logos, patos) korrekt og med sikkerhet</li>
+<li>koble hvert eksempel til en konkret effekt hos mottakeren — vise, ikke bare påstå</li>
+<li>vurdere kritisk hvor godt teksten når formålet sitt, ikke bare beskrive hva den gjør</li>
+<li>se sammenhengen mellom aptum/kairos og appellformene</li>
+<li>skrive med et presist, nyansert og sammenhengende språk</li>
+</ul>
+</section>
+
+<section id="sjekkliste">
+<h2>Sjekkliste før prøve/eksamen</h2>
+<ul class="checklist">
+<li>Jeg kan definere aptum (indre og ytre) og forklare det på egen hånd.</li>
+<li>Jeg kan definere kairos og forklare forskjellen på aptum og kairos.</li>
+<li>Jeg kan forklare innledende, avledet og endelig etos med eksempler.</li>
+<li>Jeg kan forklare logos og patos, med eksempler på hver.</li>
+<li>Jeg kan bruke argumentmodellen (påstand + fordi …).</li>
+<li>Jeg kjenner minst 6–8 retoriske virkemidler og kan koble hvert til en effekt.</li>
+<li>Jeg vet hva som skal med i innledningen av en retorisk analyse.</li>
+<li>Jeg kan skrive et presist kortsvar om et retorisk begrep på 5–10 setninger.</li>
+<li>Jeg kan bygge opp et fullstendig langsvar med innledning, analyse og vurdering.</li>
+<li>Jeg avslutter alltid analysen med en tydelig, begrunnet vurdering.</li>
+</ul>
+</section>
+
+<section id="feil">
+<h2>De vanligste eksamensfeilene</h2>
+<ol>
+<li>Å gjenfortelle innholdet i teksten i stedet for å analysere formen og virkemidlene.</li>
+<li>Å navngi virkemidler uten eksempel eller uten å forklare effekten.</li>
+<li>Å blande sammen aptum og kairos, eller aptum og etos.</li>
+<li>Å skrive en lang, generell innledning uten relevans for analysen.</li>
+<li>Å glemme å vurdere om teksten faktisk når formålet sitt.</li>
+<li>Å bruke for få eller for generelle eksempler — analysen blir påstander uten belegg.</li>
+<li>Å skrive kortsvar som om det var langsvar, eller omvendt.</li>
+</ol>
+</section>
+
+<section id="ordliste">
+<h2>Ordliste</h2>
+<ul>
+<li><strong>Retorikk:</strong> læren om hvordan man overbeviser og virker på mottakeren gjennom språk.</li>
+<li><strong>Sakprosa:</strong> tekster som gir seg ut for å være sanne/faktabaserte, i motsetning til skjønnlitteratur.</li>
+<li><strong>Retorisk situasjon:</strong> sammenhengen en tekst oppstår i: avsender, mottaker, budskap og kontekst.</li>
+<li><strong>Aptum:</strong> hvorvidt en tekst er passende/tilpasset situasjonen, mottakeren og avsenderen (indre og ytre aptum).</li>
+<li><strong>Kairos:</strong> det rette øyeblikket — om tidspunktet og situasjonen for teksten er gunstig.</li>
+<li><strong>Etos:</strong> avsenderens troverdighet (innledende, avledet og endelig etos).</li>
+<li><strong>Logos:</strong> appell til fornuft gjennom fakta og logisk argumentasjon.</li>
+<li><strong>Patos:</strong> appell til mottakerens følelser og verdier.</li>
+<li><strong>Hovedsyn:</strong> avsenderens budskap — hva teksten egentlig mener.</li>
+<li><strong>Formål:</strong> hva avsenderen vil at mottakeren skal tenke, føle eller gjøre.</li>
+<li><strong>Argument:</strong> påstand + begrunnelse («fordi …»).</li>
+<li><strong>Retorisk virkemiddel:</strong> et språklig grep som styrker en appellform.</li>
+<li><strong>Kortsvar:</strong> en kort, presis besvarelse av ett avgrenset spørsmål.</li>
+<li><strong>Langsvar:</strong> en sammenhengende analyse med innledning, hoveddel og avslutning.</li>
+</ul>
+
+<footer class="pagefoot">
+<p>Norsk vg3 · NOR01-08 · Sist oppdatert automatisk av Elif Kurt</p>
+</footer>
+</section>
+
+</main>
+</div>
+
+<a href="#forside" class="backtotop" title="Til toppen">↑</a>
+
+<script>
+const toggle = document.getElementById('navToggle');
+const sidebar = document.getElementById('sidebar');
+toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+
+sidebar.querySelectorAll('a').forEach(a => {
+a.addEventListener('click', () => {
+if (window.innerWidth <= 820) sidebar.classList.remove('open');
+});
+});
+
+const sections = document.querySelectorAll('main section[id]');
+const navLinks = sidebar.querySelectorAll('a');
+const obs = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+const link = sidebar.querySelector('a[href="#' + entry.target.id + '"]');
+if (!link) return;
+if (entry.isIntersecting) {
+navLinks.forEach(l => l.classList.remove('active'));
+link.classList.add('active');
+}
+});
+}, { rootMargin: '-30% 0px -60% 0px' });
+sections.forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
