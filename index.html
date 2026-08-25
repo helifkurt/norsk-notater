@@ -76,8 +76,45 @@ padding:14px 16px; margin:16px 0;
 
 ul, ol{padding-left:1.3em;}
 li{margin-bottom:6px;}
+.checklist{padding-left:0;}
 .checklist li{list-style:none; margin-bottom:8px;}
-.checklist li::before{content:"☐ "; }
+.checklist label{display:flex; align-items:flex-start; gap:10px; cursor:pointer; padding:6px 8px; border-radius:8px;}
+.checklist label:hover{background:var(--boxfill);}
+.checklist input[type="checkbox"]{
+appearance:none; -webkit-appearance:none; flex-shrink:0; width:20px; height:20px; margin-top:1px;
+border:2px solid var(--accent); border-radius:5px; cursor:pointer; position:relative; background:#fff;
+}
+.checklist input[type="checkbox"]:checked{background:var(--brand); border-color:var(--brand);}
+.checklist input[type="checkbox"]:checked::after{
+content:""; position:absolute; left:5px; top:1px; width:6px; height:11px;
+border:solid #fff; border-width:0 2px 2px 0; transform:rotate(45deg);
+}
+.checklist .checktext{transition:color .15s ease, opacity .15s ease;}
+.checklist input[type="checkbox"]:checked ~ .checktext{color:var(--muted); text-decoration:line-through; opacity:.75;}
+.checklist-progress{font-size:.9em; color:var(--muted); margin:10px 0 4px;}
+.checklist-reset{
+margin-top:10px; background:none; border:1.5px solid var(--accent); color:var(--accent);
+border-radius:8px; padding:6px 12px; font-size:.85em; cursor:pointer;
+}
+.checklist-reset:hover{background:var(--boxfill);}
+
+.celebrate-emoji{
+position:fixed; font-size:26px; pointer-events:none; z-index:999; left:0; top:0;
+animation:celebrateFloat 1.5s ease-out forwards;
+}
+@keyframes celebrateFloat{
+0%{transform:translate(0,0) scale(.4) rotate(0deg); opacity:0;}
+15%{opacity:1; transform:translate(var(--dx,0),-10px) scale(1) rotate(var(--rot,10deg));}
+100%{transform:translate(var(--dx,0),-140px) scale(1.05) rotate(var(--rot,10deg)); opacity:0;}
+}
+.compliment-toast{
+position:fixed; left:50%; bottom:28px; transform:translateX(-50%) translateY(16px);
+background:var(--brand); color:#fff; padding:12px 22px; border-radius:999px;
+font-weight:700; font-size:.95em; box-shadow:0 6px 20px rgba(0,0,0,.22);
+opacity:0; transition:opacity .25s ease, transform .25s ease; z-index:1000;
+pointer-events:none; text-align:center; white-space:nowrap; max-width:90vw;
+}
+.compliment-toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
 
 .example{border-left:4px solid var(--accent); padding-left:14px; margin:18px 0;}
 .example h4{margin-top:0;}
@@ -206,9 +243,29 @@ code, .mono{font-family:ui-monospace,Menlo,Consolas,monospace;}
 <h4>Eksempel: kairos</h4>
 <p>En klimaaktivist som holder appell rett etter en flom i lokalsamfunnet, treffer et godt kairos — publikum er allerede opptatt av temaet.</p>
 </div>
+<div class="box plain">
+<p><strong>Kairos vs. den retoriske situasjonen:</strong> Kairos er i utgangspunktet et eldre og snevrere begrep — det handler om å gripe det rette øyeblikket for en ytring. Den retoriske situasjonen (jf. Bitzers modell i punkt 2.4) er et mer omfattende fagbegrep, utviklet nettopp for å studere tekst i kontekst, og egner seg derfor best som redskap i en fullstendig retorisk analyse.</p>
+<p>Et kjent eksempel på svært godt kairos er John F. Kennedys Berlin-tale i 1963, der han sa «Ich bin ein Berliner» — en kort, symboltung setning ytret på nøyaktig rett sted og tidspunkt for å vise solidaritet med Vest-Berlin under den kalde krigen.</p>
+</div>
 
 <h3>2.3 Avsender, mottaker og kontekst</h3>
 <p>Når du åpner en retorisk analyse, bør du kort etablere den retoriske situasjonen: Hvem er avsender (og hvilken etos har hen fra før)? Hvem er mottakeren/målgruppen? Hva er konteksten — hvor og når er teksten publisert, og hvorfor akkurat da?</p>
+
+<h3>2.4 Modelleksempel: Bitzers retoriske situasjon og et aptum-problem</h3>
+<p>Den amerikanske retorikkforskeren Lloyd Bitzer har laget en modell som deler den retoriske situasjonen inn i tre deler, og som gjør det lettere å analysere presist HVORFOR en tekst oppstår akkurat som og når den gjør:</p>
+<ul>
+<li><strong>Det påtrengende problemet:</strong> hva er det som tvinger fram en ytring akkurat nå — en hendelse, et behov, en konflikt?</li>
+<li><strong>Det retoriske publikummet:</strong> hvem er det som faktisk kan påvirkes av teksten til å tenke eller handle annerledes?</li>
+<li><strong>De tvingende omstendighetene:</strong> hvilke ytre begrensninger — tid, sted, manglende informasjon, manglende kontroll — påvirker hvordan avsenderen kan svare?</li>
+</ul>
+<div class="example">
+<h4>Eksempel: en pressetale i et akutt øyeblikk</h4>
+<p>Et kjent eksempel er den amerikanske presidenten George W. Bushs korte uttalelse til pressen 11. september 2001. Han var på skolebesøk da han fikk beskjed om terrorangrepene mot World Trade Center, og måtte umiddelbart si noe offentlig før han reiste videre til Washington.</p>
+<p><strong>Påtrengende problem:</strong> selve terrorangrepet — en nasjonal tragedie som krevde en umiddelbar reaksjon fra landets øverste leder.</p>
+<p><strong>Retorisk publikum:</strong> i rommet satt elever og lærere ved skolen, men det egentlige publikummet var hele det amerikanske folket, som fulgte med via mediene.</p>
+<p><strong>Tvingende omstendigheter:</strong> Bush hadde svært lite informasjon om hva som faktisk hadde skjedd, og ingen mulighet til å kontrollere den videre utviklingen — noe som gjorde det krevende å formulere en uttalelse som virket trygg og handlekraftig.</p>
+</div>
+<p>Uttalelsen er også et godt eksempel på hvordan aptum kan svikte selv i en velment tekst. Han innleder med å konstatere at «this is a difficult moment for America» og takke skolen for gjestfriheten, før han går videre til selve angrepet — en rekkefølge som gjør at det alvorlige budskapet først kommer i skyggen av en høflighetsfrase. Han bruker dessuten det samme uformelle ordet «folks» både om elevene han nettopp har besøkt, og om terroristene bak angrepet, noe som gir teksten en påfallende uformell tone til en så alvorlig sak. Sett under ett gir dette inntrykk av at avsenderen ikke helt har kontroll over situasjonen — et konkret eksempel på svak aptum i praksis, og et godt sammenligningsgrunnlag mot Northug-eksempelet i punkt 8, der aptum tvert imot er godt ivaretatt.</p>
 </section>
 
 <section id="k3">
@@ -239,6 +296,14 @@ code, .mono{font-family:ui-monospace,Menlo,Consolas,monospace;}
 <div class="box plain">
 <p><strong>Effekt:</strong> mottakeren blir følelsesmessig engasjert → lettere å overbevise.</p>
 </div>
+
+<div class="example">
+<h4>Eksempel: typiske signalfraser</h4>
+<p><strong>Etos:</strong> avsenderen viser til egen erfaring, ekspertise eller tidligere resultater for å virke troverdig — for eksempel ved å vise til hva hen har oppnådd før.</p>
+<p><strong>Logos:</strong> avsenderen viser til tall, statistikk eller sammenligninger for å underbygge en påstand — for eksempel ved å hevde at «tallene viser at» noe har blitt bedre eller dårligere.</p>
+<p><strong>Patos:</strong> avsenderen bruker ladede spørsmål eller sterke bilder som skal vekke følelser hos mottakeren — for eksempel retoriske spørsmål formulert for å utløse medfølelse eller indignasjon.</p>
+</div>
+
 <div class="box warn">
 <div class="box-title">Vanlig feil</div>
 <ul>
@@ -464,18 +529,20 @@ code, .mono{font-family:ui-monospace,Menlo,Consolas,monospace;}
 
 <section id="sjekkliste">
 <h2>Sjekkliste før prøve/eksamen</h2>
-<ul class="checklist">
-<li>Jeg kan definere aptum (indre og ytre) og forklare det på egen hånd.</li>
-<li>Jeg kan definere kairos og forklare forskjellen på aptum og kairos.</li>
-<li>Jeg kan forklare innledende, avledet og endelig etos med eksempler.</li>
-<li>Jeg kan forklare logos og patos, med eksempler på hver.</li>
-<li>Jeg kan bruke argumentmodellen (påstand + fordi …).</li>
-<li>Jeg kjenner minst 6–8 retoriske virkemidler og kan koble hvert til en effekt.</li>
-<li>Jeg vet hva som skal med i innledningen av en retorisk analyse.</li>
-<li>Jeg kan skrive et presist kortsvar om et retorisk begrep på 5–10 setninger.</li>
-<li>Jeg kan bygge opp et fullstendig langsvar med innledning, analyse og vurdering.</li>
-<li>Jeg avslutter alltid analysen med en tydelig, begrunnet vurdering.</li>
+<p class="checklist-progress" id="checklistProgress"></p>
+<ul class="checklist" id="checklistItems">
+<li><label><input type="checkbox" data-key="c1"><span class="checktext">Jeg kan definere aptum (indre og ytre) og forklare det på egen hånd.</span></label></li>
+<li><label><input type="checkbox" data-key="c2"><span class="checktext">Jeg kan definere kairos og forklare forskjellen på aptum og kairos.</span></label></li>
+<li><label><input type="checkbox" data-key="c3"><span class="checktext">Jeg kan forklare innledende, avledet og endelig etos med eksempler.</span></label></li>
+<li><label><input type="checkbox" data-key="c4"><span class="checktext">Jeg kan forklare logos og patos, med eksempler på hver.</span></label></li>
+<li><label><input type="checkbox" data-key="c5"><span class="checktext">Jeg kan bruke argumentmodellen (påstand + fordi …).</span></label></li>
+<li><label><input type="checkbox" data-key="c6"><span class="checktext">Jeg kjenner minst 6–8 retoriske virkemidler og kan koble hvert til en effekt.</span></label></li>
+<li><label><input type="checkbox" data-key="c7"><span class="checktext">Jeg vet hva som skal med i innledningen av en retorisk analyse.</span></label></li>
+<li><label><input type="checkbox" data-key="c8"><span class="checktext">Jeg kan skrive et presist kortsvar om et retorisk begrep på 5–10 setninger.</span></label></li>
+<li><label><input type="checkbox" data-key="c9"><span class="checktext">Jeg kan bygge opp et fullstendig langsvar med innledning, analyse og vurdering.</span></label></li>
+<li><label><input type="checkbox" data-key="c10"><span class="checktext">Jeg avslutter alltid analysen med en tydelig, begrunnet vurdering.</span></label></li>
 </ul>
+<button type="button" class="checklist-reset" id="checklistReset">Nullstill sjekkliste</button>
 </section>
 
 <section id="feil">
@@ -544,6 +611,97 @@ link.classList.add('active');
 });
 }, { rootMargin: '-30% 0px -60% 0px' });
 sections.forEach(s => obs.observe(s));
+
+// ---- Sjekkliste: avkrysning med lagring + komplimenter ----
+(function () {
+const STORAGE_KEY = 'retorikk-sjekkliste-v1';
+const boxes = Array.from(document.querySelectorAll('#checklistItems input[type="checkbox"]'));
+const progressEl = document.getElementById('checklistProgress');
+const resetBtn = document.getElementById('checklistReset');
+if (!boxes.length) return;
+
+function loadState() {
+try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+catch (e) { return {}; }
+}
+function saveState(state) {
+try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+catch (e) {}
+}
+function updateProgress() {
+const checked = boxes.filter(b => b.checked).length;
+if (checked === boxes.length) {
+progressEl.textContent = 'Alt huket av — du er klar! 🎉';
+} else {
+progressEl.textContent = checked + ' av ' + boxes.length + ' huket av.';
+}
+}
+
+const state = loadState();
+boxes.forEach(b => {
+const key = b.dataset.key;
+if (state[key]) b.checked = true;
+});
+updateProgress();
+
+const complimenter = [
+'Nice jobbet! 💪', 'Du er på riktig vei! ✨', 'Snasent! Fortsett sånn! 🌟',
+'Du kommer til å knuse denne prøven! 🔥', 'Superb! 🦄', 'Du er en stjerne! ⭐',
+'Godt jobba! 💗', 'Du har dette! 🙌', 'Flink jente! 🦄', 'Se der ja! 💖'
+];
+const emojiSet = ['💗', '💖', '💕', '🦄', '✨', '🌟'];
+
+function celebrate(anchorEl) {
+const rect = anchorEl.getBoundingClientRect();
+const originX = rect.left + rect.width / 2;
+const originY = rect.top + rect.height / 2;
+
+for (let i = 0; i < 9; i++) {
+const span = document.createElement('span');
+span.className = 'celebrate-emoji';
+span.textContent = emojiSet[Math.floor(Math.random() * emojiSet.length)];
+const dx = (Math.random() - 0.5) * 160;
+const rot = (Math.random() - 0.5) * 60;
+span.style.setProperty('--dx', dx + 'px');
+span.style.setProperty('--rot', rot + 'deg');
+span.style.left = originX + 'px';
+span.style.top = originY + 'px';
+span.style.animationDelay = (Math.random() * 0.15) + 's';
+document.body.appendChild(span);
+setTimeout(() => span.remove(), 1800);
+}
+
+let toast = document.getElementById('complimentToast');
+if (!toast) {
+toast = document.createElement('div');
+toast.id = 'complimentToast';
+toast.className = 'compliment-toast';
+document.body.appendChild(toast);
+}
+toast.textContent = complimenter[Math.floor(Math.random() * complimenter.length)];
+toast.classList.add('show');
+clearTimeout(toast._hideTimer);
+toast._hideTimer = setTimeout(() => toast.classList.remove('show'), 1600);
+}
+
+boxes.forEach(b => {
+b.addEventListener('change', () => {
+const s = loadState();
+s[b.dataset.key] = b.checked;
+saveState(s);
+updateProgress();
+if (b.checked) celebrate(b);
+});
+});
+
+if (resetBtn) {
+resetBtn.addEventListener('click', () => {
+boxes.forEach(b => { b.checked = false; });
+saveState({});
+updateProgress();
+});
+}
+})();
 </script>
 
 </body>
